@@ -1,3 +1,4 @@
+
 import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
@@ -27,8 +28,8 @@ export const TaskCard = ({ task, onComplete }: TaskCardProps) => {
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <Card className="w-full max-w-md">
-        <CardHeader className="relative bg-accent/20 rounded-t-xl">
-          <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-accent text-accent-foreground flex items-center justify-center font-bold">
+        <CardHeader className="relative bg-amber-100 rounded-t-xl">
+          <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-amber-500 text-white flex items-center justify-center font-bold">
             {timeLeft}
           </div>
           <CardTitle>Задание</CardTitle>
@@ -37,7 +38,7 @@ export const TaskCard = ({ task, onComplete }: TaskCardProps) => {
         <CardContent className="pt-6">
           <p className="text-lg font-medium mb-6">{task}</p>
           
-          <div className="bg-muted p-4 rounded-lg text-center text-muted-foreground">
+          <div className="bg-gray-50 p-4 rounded-lg text-center text-gray-600">
             Другие игроки должны оценить, насколько хорошо вы выполнили задание
           </div>
         </CardContent>
@@ -45,7 +46,7 @@ export const TaskCard = ({ task, onComplete }: TaskCardProps) => {
           <Button variant="outline" onClick={() => onComplete(false)}>
             Не выполнено
           </Button>
-          <Button onClick={() => onComplete(true)}>
+          <Button onClick={() => onComplete(true)} className="bg-amber-500 hover:bg-amber-600">
             Выполнено успешно
           </Button>
         </CardFooter>

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+
+import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
@@ -15,7 +16,7 @@ export const QuestionCard = ({ question, options, onAnswer }: QuestionCardProps)
   const [timeLeft, setTimeLeft] = useState(30);
   
   // Эффект для отсчета времени
-  React.useEffect(() => {
+  useEffect(() => {
     if (timeLeft <= 0) {
       onAnswer("");
       return;
@@ -35,8 +36,8 @@ export const QuestionCard = ({ question, options, onAnswer }: QuestionCardProps)
   return (
     <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
       <Card className="w-full max-w-md">
-        <CardHeader className="relative bg-primary/10 rounded-t-xl">
-          <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-bold">
+        <CardHeader className="relative bg-purple-100 rounded-t-xl">
+          <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-purple-700 text-white flex items-center justify-center font-bold">
             {timeLeft}
           </div>
           <CardTitle>Вопрос</CardTitle>
@@ -58,7 +59,7 @@ export const QuestionCard = ({ question, options, onAnswer }: QuestionCardProps)
           <Button variant="ghost" onClick={() => onAnswer("")}>
             Пропустить
           </Button>
-          <Button onClick={handleSubmit} disabled={!selectedAnswer}>
+          <Button onClick={handleSubmit} disabled={!selectedAnswer} className="bg-purple-700 hover:bg-purple-800">
             Ответить
           </Button>
         </CardFooter>

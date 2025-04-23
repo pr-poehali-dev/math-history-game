@@ -1,163 +1,189 @@
+
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Separator } from "@/components/ui/separator";
+import { BookOpenText, Users, Award, DicesIcon, Brain, Clock } from "lucide-react";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col">
-      <header className="p-6 bg-primary text-primary-foreground shadow-md">
-        <div className="container mx-auto">
-          <h1 className="text-3xl font-bold">История математических открытий</h1>
-          <p className="text-xl opacity-90">Настольная игра о великих математиках и их открытиях</p>
-        </div>
+    <div className="min-h-screen bg-gradient-to-b from-purple-50 to-white">
+      <header className="pt-16 pb-12 text-center px-4">
+        <h1 className="text-4xl md:text-5xl font-bold text-purple-900 mb-4">История математических открытий</h1>
+        <p className="text-xl text-purple-700 max-w-2xl mx-auto">
+          Увлекательная настольная игра для любителей математики и науки
+        </p>
       </header>
-      
-      <main className="flex-1 container mx-auto py-8 px-4 md:px-6">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 className="text-4xl font-bold mb-4">Путешествие в мир математики!</h2>
-            <p className="text-xl mb-6">
-              Отправьтесь в увлекательное путешествие по истории математических открытий,
-              отвечайте на вопросы, выполняйте задания и узнавайте о великих математиках и их вкладе в науку.
-            </p>
-            <div className="flex gap-4">
-              <Button size="lg" asChild>
-                <Link to="/game">Начать игру</Link>
-              </Button>
-            </div>
-          </div>
-          <div className="bg-card rounded-xl p-6 shadow-lg border">
-            <img 
-              src="/placeholder.svg" 
-              alt="Игровое поле" 
-              className="rounded-lg w-full h-auto" 
-            />
-          </div>
+
+      <main className="container mx-auto px-4 pb-16">
+        <div className="flex flex-col items-center justify-center mb-12">
+          <Button size="lg" className="text-lg bg-purple-700 hover:bg-purple-800" asChild>
+            <Link to="/game">Начать игру</Link>
+          </Button>
         </div>
-        
-        <Tabs defaultValue="rules" className="mt-16 max-w-4xl mx-auto">
+
+        <Card className="mb-12 border-purple-200 shadow-lg">
+          <CardHeader className="bg-purple-100 rounded-t-lg">
+            <CardTitle className="text-2xl text-purple-900">О игре</CardTitle>
+            <CardDescription>Увлекательное путешествие в мир математических открытий</CardDescription>
+          </CardHeader>
+          <CardContent className="pt-6">
+            <p className="text-lg mb-4">
+              "История математических открытий" - это настольная игра, которая позволяет игрокам погрузиться в увлекательный 
+              мир математики, узнать о великих математиках и их открытиях, а также проверить свои знания в этой области.
+            </p>
+            <p className="text-lg">
+              Игроки перемещаются по игровому полю, отвечают на вопросы, выполняют задания и собирают очки. Победителем становится 
+              тот, кто наберет больше всего очков к концу игры или первым достигнет финиша.
+            </p>
+          </CardContent>
+        </Card>
+
+        <Tabs defaultValue="rules" className="mb-12">
           <TabsList className="grid w-full grid-cols-3">
-            <TabsTrigger value="rules">Правила игры</TabsTrigger>
+            <TabsTrigger value="rules">Правила</TabsTrigger>
             <TabsTrigger value="components">Компоненты</TabsTrigger>
             <TabsTrigger value="tips">Советы</TabsTrigger>
           </TabsList>
-          <TabsContent value="rules" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Правила игры</CardTitle>
-                <CardDescription>Как играть в "Историю математических открытий"</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-semibold">Цель игры:</h3>
-                    <p>Собрать как можно больше очков, отвечая на вопросы и выполняя задания, связанные с историей математических открытий и известными математиками.</p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-semibold">Количество игроков:</h3>
-                    <p>2-6 человек</p>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-semibold">Ход игры:</h3>
-                    <ol className="list-decimal pl-5 space-y-2">
-                      <li>Игрок бросает кубик и перемещает свою фишку на соответствующее количество клеток.</li>
-                      <li>В зависимости от клетки, на которую он попал, игрок выполняет одно из действий:
-                        <ul className="list-disc pl-5 mt-2">
-                          <li><span className="font-medium">Клетка с вопросом:</span> Игрок отвечает на вопрос. Правильный ответ: 2 очка.</li>
-                          <li><span className="font-medium">Клетка с заданием:</span> Игрок выполняет задание. Успешное выполнение: 3 очка.</li>
-                          <li><span className="font-medium">Клетка "Шанс":</span> Игрок может получить или потерять очки.</li>
-                          <li><span className="font-medium">Клетка "Пропуск хода":</span> Игрок пропускает следующий ход.</li>
-                        </ul>
-                      </li>
-                      <li>Игра продолжается до достижения финиша или использования всех карточек.</li>
-                    </ol>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-semibold">Завершение игры:</h3>
-                    <p>Побеждает игрок, набравший больше всего очков.</p>
-                  </div>
+          
+          <TabsContent value="rules" className="p-6 bg-white rounded-lg shadow border mt-2">
+            <h2 className="text-2xl font-bold text-purple-900 mb-4">Правила игры</h2>
+            
+            <div className="space-y-6">
+              <div className="flex gap-3">
+                <Award className="h-6 w-6 text-purple-700 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-semibold mb-1">Цель игры</h3>
+                  <p>Собрать как можно больше очков, отвечая на вопросы и выполняя задания, связанные с историей математических открытий.</p>
                 </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          
-          <TabsContent value="components" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Компоненты игры</CardTitle>
-                <CardDescription>Что входит в комплект настольной игры</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">🎮</span>
-                    <span>Игровое поле с маршрутом (в виде спирали или зигзага)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">🃏</span>
-                    <span>Карточки с вопросами и заданиями (разделенные на категории)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">♟️</span>
-                    <span>Фишки для игроков</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">🎲</span>
-                    <span>Кубик</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">📝</span>
-                    <span>Блокнот для подсчета очков</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-primary">⏱️</span>
-                    <span>Таймер (по желанию)</span>
-                  </li>
-                </ul>
-              </CardContent>
-            </Card>
-          </TabsContent>
-          
-          <TabsContent value="tips" className="mt-6">
-            <Card>
-              <CardHeader>
-                <CardTitle>Советы</CardTitle>
-                <CardDescription>Как сделать игру интереснее</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="space-y-4">
-                  <div>
-                    <h3 className="text-lg font-semibold">Дополнительные правила:</h3>
-                    <ul className="list-disc pl-5 space-y-2">
-                      <li>Установите таймер на 30 секунд для ответов на вопросы или выполнения заданий, чтобы сделать игру более динамичной.</li>
-                      <li>Разделите вопросы по уровням сложности (легкие, средние, сложные), что позволит игрокам выбирать уровень в зависимости от своих знаний.</li>
-                      <li>Добавьте специальные карточки с интересными фактами о математиках, которые дают дополнительный бонус.</li>
+              </div>
+              
+              <div className="flex gap-3">
+                <Users className="h-6 w-6 text-purple-700 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-semibold mb-1">Количество игроков</h3>
+                  <p>От 2 до 6 человек.</p>
+                </div>
+              </div>
+              
+              <div className="flex gap-3">
+                <DicesIcon className="h-6 w-6 text-purple-700 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-semibold mb-1">Ход игры</h3>
+                  <ol className="list-decimal list-inside space-y-2 ml-4">
+                    <li>Игрок бросает кубик и перемещает фишку на соответствующее количество клеток.</li>
+                    <li>В зависимости от клетки, игрок выполняет действие:</li>
+                    <ul className="list-disc list-inside ml-8 space-y-1">
+                      <li><strong>Клетка с вопросом (?):</strong> Ответьте на вопрос. Правильный ответ = 2 очка.</li>
+                      <li><strong>Клетка с заданием (!):</strong> Выполните задание. Успешное выполнение = 3 очка.</li>
+                      <li><strong>Клетка "Шанс" (⚡):</strong> Вытяните карточку шанса (может дать или забрать очки).</li>
+                      <li><strong>Клетка "Пропуск хода" (⏭️):</strong> Пропустите следующий ход.</li>
                     </ul>
-                  </div>
-                  
-                  <div>
-                    <h3 className="text-lg font-semibold">Образовательный аспект:</h3>
-                    <p>Эта игра не только развлекает, но и помогает участникам узнать больше о математических открытиях и их значении в истории науки!</p>
-                  </div>
+                    <li>Ход переходит к следующему игроку.</li>
+                  </ol>
                 </div>
-              </CardContent>
-              <CardFooter>
-                <Button variant="outline" asChild>
-                  <Link to="/game">Начать игру сейчас</Link>
-                </Button>
-              </CardFooter>
-            </Card>
+              </div>
+              
+              <div className="flex gap-3">
+                <Clock className="h-6 w-6 text-purple-700 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-semibold mb-1">Завершение игры</h3>
+                  <p>Игра заканчивается, когда один из игроков достигает финиша. Побеждает игрок с наибольшим количеством очков.</p>
+                </div>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="components" className="p-6 bg-white rounded-lg shadow border mt-2">
+            <h2 className="text-2xl font-bold text-purple-900 mb-4">Компоненты игры</h2>
+            
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h3 className="text-xl font-semibold text-purple-900 mb-2">Игровое поле</h3>
+                <p>25 клеток с различными типами: вопросы, задания, шансы и пропуск хода.</p>
+              </div>
+              
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h3 className="text-xl font-semibold text-purple-900 mb-2">Игроки</h3>
+                <p>От 2 до 6 игроков, каждый со своей фишкой и счетчиком очков.</p>
+              </div>
+              
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h3 className="text-xl font-semibold text-purple-900 mb-2">Карточки вопросов</h3>
+                <p>Содержат вопросы о математиках и их открытиях с вариантами ответов.</p>
+              </div>
+              
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h3 className="text-xl font-semibold text-purple-900 mb-2">Карточки заданий</h3>
+                <p>Творческие или логические задания, связанные с математикой.</p>
+              </div>
+              
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h3 className="text-xl font-semibold text-purple-900 mb-2">Карточки шанса</h3>
+                <p>Случайные события, влияющие на количество очков игрока.</p>
+              </div>
+              
+              <div className="bg-purple-50 p-4 rounded-lg">
+                <h3 className="text-xl font-semibold text-purple-900 mb-2">Таймер</h3>
+                <p>30 секунд на ответ или выполнение задания.</p>
+              </div>
+            </div>
+          </TabsContent>
+          
+          <TabsContent value="tips" className="p-6 bg-white rounded-lg shadow border mt-2">
+            <h2 className="text-2xl font-bold text-purple-900 mb-4">Советы для игроков</h2>
+            
+            <div className="space-y-4">
+              <div className="flex gap-3">
+                <Brain className="h-6 w-6 text-purple-700 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-semibold mb-1">Стратегия</h3>
+                  <p>Выбирайте рисковые стратегии для заданий, чтобы получить максимум очков. Задания дают больше очков, чем вопросы!</p>
+                </div>
+              </div>
+              
+              <Separator className="my-4" />
+              
+              <div className="flex gap-3">
+                <BookOpenText className="h-6 w-6 text-purple-700 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-semibold mb-1">Подготовка</h3>
+                  <p>Освежите в памяти основные факты из истории математики:</p>
+                  <ul className="list-disc list-inside ml-4 mt-2 space-y-1">
+                    <li>Великие математики (Евклид, Пифагор, Ньютон, Гаусс, и др.)</li>
+                    <li>Важные теоремы и формулы</li>
+                    <li>Ключевые даты математических открытий</li>
+                    <li>Вклад математиков в развитие науки</li>
+                  </ul>
+                </div>
+              </div>
+              
+              <Separator className="my-4" />
+              
+              <div className="flex gap-3">
+                <Users className="h-6 w-6 text-purple-700 flex-shrink-0 mt-1" />
+                <div>
+                  <h3 className="text-xl font-semibold mb-1">Командная игра</h3>
+                  <p>Можно играть командами, особенно если участники имеют разный уровень знаний в математике. Это сделает игру более сбалансированной.</p>
+                </div>
+              </div>
+            </div>
           </TabsContent>
         </Tabs>
+        
+        <div className="text-center">
+          <h2 className="text-2xl font-bold text-purple-900 mb-6">Готовы проверить свои знания?</h2>
+          <Button size="lg" className="text-lg bg-purple-700 hover:bg-purple-800" asChild>
+            <Link to="/game">Начать игру</Link>
+          </Button>
+        </div>
       </main>
       
-      <footer className="bg-muted py-6">
-        <div className="container mx-auto text-center">
-          <p className="text-muted-foreground">© 2023 История математических открытий</p>
+      <footer className="bg-purple-900 text-white py-8">
+        <div className="container mx-auto px-4 text-center">
+          <p>© 2023 История математических открытий</p>
+          <p className="text-purple-200 mt-2">Образовательная настольная игра</p>
         </div>
       </footer>
     </div>
